@@ -55,6 +55,8 @@ const companies = [
   { name: "Axis Bank", domain: "axisbank.com" },
   { name: "Microsoft", domain: "microsoft.com" },
   { name: "Oracle", domain: "oracle.com" },
+  { name: "Barclays", domain: "barclays.com" },
+  { name: "IBM", domain: "ibm.com" },
   { name: "Adapts.ai", domain: "adapts.ai" },
   { name: "Quadrant Technologies", domain: "quadranttechnologies.com" },
   { name: "Nextech", domain: "nextech.com" },
