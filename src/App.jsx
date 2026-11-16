@@ -50,12 +50,44 @@ const teamMembers = [
   },
 ];
 
+const companies = [
+  { name: "Galaxy", domain: "galaxy.com" },
+  { name: "Axis Bank", domain: "axisbank.com" },
+  { name: "Microsoft", domain: "microsoft.com" },
+  { name: "Oracle", domain: "oracle.com" },
+  { name: "Adapts.ai", domain: "adapts.ai" },
+  { name: "Quadrant Technologies", domain: "quadranttechnologies.com" },
+  { name: "Nextech", domain: "nextech.com" },
+  { name: "Psycray", domain: "psycray.com" },
+  { name: "Wabtec Corporation", domain: "wabtec.com" },
+];
+
+const decemberEvents = [
+  { day: 2, type: "callout", number: 1, title: "Callout #1", time: "6–7 PM" },
+  { day: 3, type: "callout", number: 2, title: "Callout #2", time: "6–7 PM" },
+  { day: 6, type: "deadline", title: "Applications due" },
+];
+
+const applications = [
+  {
+    title: "General Member",
+    description: "Apply to join Fincept as a general member.",
+    url: "https://docs.google.com/forms/d/e/1FAIpQLSeYi5ubzhix_jL9jlm9vJOZSBuJ7Jfb9FAc9QYDFMiAE-ExeQ/viewform",
+  },
+  {
+    title: "Director",
+    description: "Apply to join the team as a director.",
+    url: "https://docs.google.com/forms/d/e/1FAIpQLSdbyiVcQfjWExd-RxTmwbdoEtbFaDsxCNA77svGLpdZYgoteQ/viewform",
+  },
+];
+
 const pageTitles = {
   "/": "Fincept | Purdue Finance & Fintech Community",
   "/about": "About — Fincept at Purdue",
   "/team": "Team — Fincept at Purdue",
   "/events": "Events — Fincept at Purdue",
   "/contact": "Contact — Fincept at Purdue",
+  "/apply": "Apply — Fincept at Purdue",
 };
 
 function ArrowIcon({ diagonal = false }) {
@@ -110,12 +142,11 @@ function HomePage() {
           <h1 className="hero-title">Fincept</h1>
           <p className="hero-affiliation">at Purdue University</p>
           <p className="hero-description">
-            We are a student community exploring the intersection of modern finance,
-            technology, and business, open to every major and experience level.
+            Fincept is a club at Purdue focused on financial technology and the systems shaping modern finance. We bring together students from diverse disciplines to explore emerging opportunities in fintech, take on projects and case competitions, and build strong professional connections.
           </p>
           <div className="hero-actions">
             <Link className="text-link" to="/about">Explore Fincept <span>↓</span></Link>
-            <Link className="button button-dark" to="/contact">Join the community <ArrowIcon /></Link>
+            <Link className="button button-dark" to="/apply">Apply to join <ArrowIcon /></Link>
           </div>
         </div>
 
@@ -135,7 +166,7 @@ function HomePage() {
       <div className="club-summary" aria-label="Fincept's focus areas">
         <div className="club-summary-inner">
           <span className="summary-label">WHAT WE BRING TOGETHER</span>
-          <span>Markets <i>×</i> Data <i>×</i> New ideas</span>
+          <span>Rethinking Fintech.</span>
           <span className="summary-location">PURDUE UNIVERSITY</span>
         </div>
       </div>
@@ -212,6 +243,24 @@ function AboutPage() {
           </div>
         </div>
       </section>
+      <section className="where-we-work section-wrap" aria-labelledby="where-we-work-title">
+        <div className="where-we-work-heading">
+          <h2 id="where-we-work-title">Where we work</h2>
+        </div>
+        <div className="company-grid">
+          {companies.map((company) => (
+            <div className="company-card" key={company.name}>
+              <img
+                src={`https://www.google.com/s2/favicons?domain_url=${encodeURIComponent(`https://${company.domain}`)}&sz=128`}
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+              <span>{company.name}</span>
+            </div>
+          ))}
+        </div>
+      </section>
     </>
   );
 }
@@ -243,15 +292,15 @@ function YearCalendar() {
     const today = new Date();
     return new Date(today.getFullYear(), today.getMonth(), 1);
   });
-  const [selectedCallout, setSelectedCallout] = useState(null);
+  const [selectedEvent, setSelectedEvent] = useState(null);
   const year = monthDate.getFullYear();
   const monthIndex = monthDate.getMonth();
   const month = monthDate.toLocaleString("en-US", { month: "long" });
   const firstWeekday = new Date(year, monthIndex, 1).getDay();
   const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
-  const eventDates = new Map([
-    ["2026-11-2", { number: 1, time: "6–7 PM" }],
-  ]);
+  const eventDates = new Map(
+    decemberEvents.map((event) => [`2026-11-${event.day}`, event]),
+  );
   const monthKey = `${year}-${monthIndex}-`;
 
   return (
@@ -265,7 +314,7 @@ function YearCalendar() {
               type="button"
               aria-label="Previous month"
               onClick={() => {
-                setSelectedCallout(null);
+                setSelectedEvent(null);
                 setMonthDate(new Date(year, monthIndex - 1, 1));
               }}
             >
@@ -275,7 +324,7 @@ function YearCalendar() {
               type="button"
               aria-label="Next month"
               onClick={() => {
-                setSelectedCallout(null);
+                setSelectedEvent(null);
                 setMonthDate(new Date(year, monthIndex + 1, 1));
               }}
             >
@@ -294,15 +343,15 @@ function YearCalendar() {
           ))}
           {Array.from({ length: daysInMonth }, (_, index) => {
             const day = index + 1;
-            const callout = eventDates.get(`${monthKey}${day}`);
+            const event = eventDates.get(`${monthKey}${day}`);
             return (
-              callout ? (
+              event ? (
                 <button
                   type="button"
-                  className="calendar-date has-event"
-                  aria-label={`Callout #${callout.number}, ${month} ${day}, ${year}, ${callout.time}`}
-                  aria-pressed={selectedCallout?.number === callout.number}
-                  onClick={() => setSelectedCallout({ ...callout, month, day, year })}
+                  className={`calendar-date has-event${event.type === "deadline" ? " is-deadline" : ""}`}
+                  aria-label={`${event.title}, ${month} ${day}, ${year}${event.time ? `, ${event.time}` : ""}`}
+                  aria-pressed={selectedEvent?.day === event.day}
+                  onClick={() => setSelectedEvent({ ...event, month, year })}
                   key={day}
                 >
                   {day}
@@ -314,12 +363,15 @@ function YearCalendar() {
           })}
         </div>
       </div>
-      {selectedCallout && (
+      {selectedEvent && (
         <p className="calendar-selected-callout" role="status">
-          Callout #{selectedCallout.number} · {selectedCallout.month} {selectedCallout.day}, {selectedCallout.year} · {selectedCallout.time}
+          {selectedEvent.title} · {selectedEvent.month} {selectedEvent.day}, {selectedEvent.year}{selectedEvent.time ? ` · ${selectedEvent.time}` : ""}
         </p>
       )}
-      <p className="calendar-note"><span aria-hidden="true" /> Fincept event</p>
+      <div className="calendar-legend">
+        <p className="calendar-note"><span aria-hidden="true" /> Callout</p>
+        <p className="calendar-note calendar-note-deadline"><span aria-hidden="true" /> Application deadline</p>
+      </div>
     </section>
   );
 }
@@ -330,20 +382,53 @@ function EventsPage() {
       <PageIntro title="Upcoming" emphasis="events." description="" plainEmphasis />
       <section className="events-section events-page section-wrap">
         <div className="events-callouts">
-          <div className="upcoming-events upcoming-events-single" aria-label="Upcoming Fincept event callouts">
-            <article className="upcoming-event">
-              <div className="upcoming-event-date">
-                <span className="upcoming-event-month">DEC</span>
-                <strong>2</strong>
-              </div>
-              <div className="upcoming-event-details">
-                <span className="upcoming-event-label">Callout #1</span>
-                <span className="upcoming-event-time">6–7 PM</span>
-              </div>
-            </article>
+          <div className="upcoming-events" aria-label="Upcoming Fincept events and application deadline">
+            {decemberEvents.map((event) => (
+              <article className={`upcoming-event${event.type === "deadline" ? " upcoming-event-deadline" : ""}`} key={event.day}>
+                <div className="upcoming-event-date">
+                  <span className="upcoming-event-month">DEC</span>
+                  <strong>{event.day}</strong>
+                </div>
+                <div className="upcoming-event-details">
+                  <span className="upcoming-event-label">{event.title}</span>
+                  {event.time && <span className="upcoming-event-time">{event.time}</span>}
+                </div>
+              </article>
+            ))}
           </div>
         </div>
         <YearCalendar />
+      </section>
+    </>
+  );
+}
+
+function ApplyPage() {
+  return (
+    <>
+      <PageIntro
+        title="Apply to"
+        emphasis="Fincept."
+        description="Applications are open for general members and directors."
+        plainEmphasis
+      />
+      <section className="apply-section section-wrap">
+        <div className="apply-grid">
+          {applications.map((application) => (
+            <article className="apply-card" key={application.title}>
+              <Kicker>APPLICATION</Kicker>
+              <h2>{application.title}</h2>
+              <p>{application.description}</p>
+              <a className="button button-dark" href={application.url} target="_blank" rel="noreferrer">
+                Apply as {application.title === "Director" ? "a director" : "a general member"} <ArrowIcon diagonal />
+              </a>
+            </article>
+          ))}
+        </div>
+        <div className="apply-dates">
+          <p><span>APPLICATIONS DUE</span><strong>December 6</strong></p>
+          <p><span>DECISIONS OUT</span><strong>December 9</strong></p>
+        </div>
       </section>
     </>
   );
@@ -426,6 +511,7 @@ function ScrollToTop() {
 
 function SiteLayout() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [announcementVisible, setAnnouncementVisible] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
@@ -436,6 +522,12 @@ function SiteLayout() {
   return (
     <>
       <ScrollToTop />
+      {announcementVisible && (
+        <aside className="application-banner" aria-label="Application announcement">
+          <Link to="/apply">Applications are live now <span>Apply by December 6</span><ArrowIcon /></Link>
+          <button type="button" aria-label="Dismiss application announcement" onClick={() => setAnnouncementVisible(false)}>×</button>
+        </aside>
+      )}
       <header className="site-header">
         <Link to="/" aria-label="Fincept home"><Wordmark /></Link>
         <button
@@ -453,7 +545,7 @@ function SiteLayout() {
           <NavLink to="/events">Events</NavLink>
           <NavLink to="/team">Team</NavLink>
           <NavLink to="/contact">Contact</NavLink>
-          <Link className="nav-cta" to="/contact">Join us <ArrowIcon diagonal /></Link>
+          <Link className="nav-cta" to="/apply">Apply <ArrowIcon diagonal /></Link>
         </nav>
       </header>
       <main>
@@ -462,6 +554,7 @@ function SiteLayout() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/team" element={<TeamPage />} />
           <Route path="/events" element={<EventsPage />} />
+          <Route path="/apply" element={<ApplyPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
@@ -473,9 +566,10 @@ function SiteLayout() {
           <Link to="/about">About</Link>
           <Link to="/team">Team</Link>
           <Link to="/events">Events</Link>
+          <Link to="/apply">Apply</Link>
           <Link to="/contact">Contact <ArrowIcon diagonal /></Link>
         </div>
-        <span className="copyright">© 2026 FINCEPT FINANCE CLUB</span>
+        <span className="copyright">© 2026 FINCEPT PURDUE</span>
       </footer>
     </>
   );
