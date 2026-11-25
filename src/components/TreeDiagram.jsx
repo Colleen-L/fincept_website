@@ -83,7 +83,6 @@ export default function TreeDiagram({ nodes, edges, width = 1000, height = 540, 
         <span className="tree__panel-tag">{current.group}</span>
         <h3>{current.title}</h3>
         <p>{current.desc}</p>
-        {current.reports && <p className="tree__reports">Reports to → {current.reports}</p>}
       </div>
 
       {legend && <p className="tree__legend">{legend}</p>}

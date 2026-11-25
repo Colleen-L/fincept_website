@@ -22,62 +22,62 @@ const nodes = [
   {
     id: 'pres', label: 'President', title: 'President', group: EXEC, tone: 'top', level: 0, depth: 0,
     x: 500, y: 48, w: 210, h: 56,
-    desc: 'Oversees the entire organization.',
+    desc: 'Leads the Executive Board and is responsible for overall organizational leadership, strategic direction, and development',
   },
   {
     id: 'evp', label: 'Executive\nVice President', title: 'Executive Vice President', group: EXEC, tone: 'exec', level: 1, depth: 1,
     x: 500, y: 170, w: 210, h: 62, reports: 'President',
-    desc: 'Assists the President and oversees the recruitment process.',
+    desc: 'Oversees internal organizational operations and supports the President in ensuring that all departments function effectively.',
   },
   {
     id: 'dea', label: 'Dir., Executive\nAffairs', title: 'Director, Executive Affairs', group: DIR, tone: 'dir', level: 1, depth: 2,
     x: 170, y: 170, w: 180, h: 62, reports: 'Executive Vice President',
-    desc: 'Assists the EVP in operations. Checks in on project leads and team leads, and communicates with the other VPs for updates when requested by the EVP.',
+    desc: 'Assists the EVP in operations and communications.',
   },
   {
     id: 'tre', label: 'Treasurer', title: 'Treasurer', group: EXEC, tone: 'exec', level: 2, depth: 2,
     x: 100, y: 330, w: 170, h: 62, reports: 'EVP + President',
-    desc: 'Handles budgeting and refunds, and collaborates with the VP of Campus Relations on fundraisers. All VPs go through the Treasurer when an event requires funding — budgets must be approved by the President and EVP.',
+    desc: 'Handles financial operations, ensuring responsible budgeting, accurate financial records, and effective allocation of organizational resources.',
   },
   {
     id: 'vpir', label: 'VP of Industry\nRelations', title: 'VP of Industry Relations', group: EXEC, tone: 'exec', level: 2, depth: 2,
     x: 300, y: 330, w: 170, h: 62, reports: 'EVP + President',
-    desc: 'Connects with industry partners to find sponsorships and fintech projects. Works with the VP of Professional Development to find industry partners.',
+    desc: 'Establishes relationships with corporations, industry professionals, and external organizations.',
   },
   {
     id: 'vpcr', label: 'VP of Campus\nRelations', title: 'VP of Campus Relations', group: EXEC, tone: 'exec', level: 2, depth: 2,
     x: 500, y: 330, w: 170, h: 62, reports: 'EVP + President',
-    desc: 'Connects with other student organizations to host events. Works with the VP of Outreach if the event is a social.',
+    desc: 'Establishes relationships with university departments, faculty, student organizations, and campus resources.',
   },
   {
     id: 'vpo', label: 'VP of\nOutreach', title: 'VP of Outreach', group: EXEC, tone: 'exec', level: 2, depth: 2,
     x: 700, y: 330, w: 170, h: 62, reports: 'EVP + President',
-    desc: 'Oversees social media presence and branding, and creates socials (with the VP of Campus Relations if it involves another organization). All other VPs go through Outreach when an event needs to be marketed on socials.',
+    desc: 'Oversees branding, marketing, communications, and outreach efforts.',
   },
   {
     id: 'vppd', label: 'VP of Professional\nDevelopment', title: 'VP of Professional Development', group: EXEC, tone: 'exec', level: 2, depth: 2,
     x: 900, y: 330, w: 170, h: 62, reports: 'EVP + President',
-    desc: 'Develops programming for workshops, speaker sessions and career spotlights. Works with the VP of Industry Relations to find industry partners.',
+    desc: 'Develops professional development initiatives, providing members with opportunities to strengthen their technical, analytical, and professional skills.',
   },
   {
     id: 'dir', label: 'Dir., Industry\nRelations', title: 'Director, Industry Relations', group: DIR, tone: 'dir', level: 3, depth: 3,
     x: 300, y: 472, w: 170, h: 58, reports: 'VP of Industry Relations',
-    desc: 'Supports the VP of Industry Relations. Lorem ipsum dolor sit amet, add specific responsibilities here.',
+    desc: 'Supports the VP of Industry Relations.',
   },
   {
     id: 'dcr', label: 'Dir., Campus\nRelations', title: 'Director, Campus Relations', group: DIR, tone: 'dir', level: 3, depth: 3,
     x: 500, y: 472, w: 170, h: 58, reports: 'VP of Campus Relations',
-    desc: 'Supports the VP of Campus Relations. Lorem ipsum dolor sit amet, add specific responsibilities here.',
+    desc: 'Supports the VP of Campus Relations.',
   },
   {
     id: 'dou', label: 'Dir.,\nOutreach', title: 'Director, Outreach', group: DIR, tone: 'dir', level: 3, depth: 3,
     x: 700, y: 472, w: 170, h: 58, reports: 'VP of Outreach',
-    desc: 'Supports the VP of Outreach. Lorem ipsum dolor sit amet, add specific responsibilities here.',
+    desc: 'Supports the VP of Outreach.',
   },
   {
     id: 'dpd', label: 'Dir., Professional\nDevelopment', title: 'Director, Professional Development', group: DIR, tone: 'dir', level: 3, depth: 3,
     x: 900, y: 472, w: 170, h: 58, reports: 'VP of Professional Development',
-    desc: 'Supports the VP of Professional Development. Lorem ipsum dolor sit amet, add specific responsibilities here.',
+    desc: 'Supports the VP of Professional Development.',
   },
 ];
 
@@ -148,16 +148,38 @@ const EXEC_PEOPLE = [
 ];
 
 const DIR_PEOPLE = [
-  ['EA', 'Dir., Executive Affairs'],
-  ['IR', 'Dir., Industry Relations'],
-  ['CR', 'Dir., Campus Relations'],
-  ['OU', 'Dir., Outreach'],
-  ['PD', 'Dir., Professional Development'],
+  {
+    initials: 'Dir',
+    name: 'First Last',
+    role: 'Dir. Position',
+    image: '',
+    linkedin: '',
+  },
+  {
+    initials: 'Dir',
+    name: 'First Last',
+    role: 'Dir. Position',
+    image: '',
+    linkedin: '',
+  },
+  {
+    initials: 'Dir',
+    name: 'First Last',
+    role: 'Dir. Position',
+    image: '',
+    linkedin: '',
+  },
+  {
+    initials: 'Dir',
+    name: 'First Last',
+    role: 'Dir. Position',
+    image: '',
+    linkedin: '',
+  },
 ];
 
 const COMPANIES = [
-  'Company One', 'Company Two', 'Company Three', 'Company Four',
-  'Company Five', 'Company Six', 'Company Seven', 'Company Eight',
+  'company', 'company'
 ];
 
 export default function Team() {
@@ -209,12 +231,18 @@ export default function Team() {
           </Reveal>
 
           <div className="people">
-            {DIR_PEOPLE.map(([ini, role], i) => (
-              <Reveal key={role} delay={(i % 4) * 90} className="person">
-                <HexAvatar initials={ini} />
-                <h4>First Last</h4>
-                <p>{role}</p>
-              </Reveal>
+            {DIR_PEOPLE.map((person) => (
+              <div key={person.role} className="person">
+                <HexAvatar
+                  initials={person.initials}
+                  image={person.image}
+                  name={person.name}
+                  linkedin={person.linkedin}
+                  accent={person.role === 'President'}
+                />
+                <h4>{person.name}</h4>
+                <p>{person.role}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -238,16 +266,13 @@ export default function Team() {
           width={1000}
           height={520}
           defaultId="pres"
-          note="The Treasurer and all VPs report to both the EVP and the President."
         />
       </section>
 
-      {/* ───── where we've worked ───── */}
       <section className="wrap section" style={{ paddingTop: 0 }} id="worked">
         <Reveal className="shead">
-          <p className="kicker">Industry relations</p>
-          <h2 className="title title--md">Where we’ve worked</h2>
-          <p className="lede">Our leaders and members have interned and worked at these companies. Replace the placeholders with logos.</p>
+          <h2 className="title title--md">Our Board in Industry</h2>
+          <p className="lede">A look at the professional experiences, career opportunities, and industry connections of our board members.</p>
         </Reveal>
         <LogoWall items={COMPANIES} />
       </section>

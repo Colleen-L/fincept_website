@@ -1023,6 +1023,12 @@ h1 {
   grid-template-columns: repeat(4, 1fr);
   gap: 14px;
 }
+.wall__logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
 .wall__tile {
   position: relative;
   display: grid;
