@@ -774,75 +774,197 @@ h1 {
   fill: var(--text);
   stroke: var(--text);
 }
+
+/* ───── Tree information panel ───── */
+
 .tree__panel {
   display: grid;
   gap: 8px;
   align-content: start;
   min-height: 168px;
+  height: auto;
   max-width: 760px;
   padding: 22px 26px;
   background: var(--bg-2);
   border-left: 4px solid var(--green);
 }
+
 .tree__panel-tag {
   font-size: 12px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--green);
 }
+
 .tree__panel h3 {
   font-size: clamp(16px, 2vw, 22px);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
+
 .tree__panel p {
   font-size: 16px;
+  line-height: 1.65;
   color: var(--muted);
 }
-.tree__panel .tree__reports {
-  color: var(--text);
+
+/* ───── Reporting / membership information ───── */
+
+.tree__membership {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.tree__membership span {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.tree__membership b {
   font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ───── Team makeup ───── */
+
+.tree__makeup {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.tree__makeup-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.tree__makeup-head h4 {
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tree__makeup-head > span {
+  color: var(--green);
+  font-size: 12px;
   letter-spacing: 0.08em;
 }
+
+.tree__roles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
+}
+
+.tree__role-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-bottom: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.tree__role-info b {
+  color: var(--green);
+  font-size: 14px;
+}
+
+.tree__role-bar {
+  height: 5px;
+  background: var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tree__role-bar span {
+  display: block;
+  height: 100%;
+  background: var(--green);
+  border-radius: inherit;
+  transition: width 300ms ease;
+}
+
+/* ───── Legend / note ───── */
+
 .tree__legend,
 .tree__note {
   font-size: 14px;
   letter-spacing: 0.06em;
   color: var(--muted);
 }
+
+/* ───── Mobile fallback ───── */
+
 .tree__list {
   display: none;
 }
+
 @media (max-width: 820px) {
   .tree__svg,
   .tree__panel {
     display: none;
   }
+
   .tree__list {
     display: grid;
     gap: 12px;
   }
+
   .tl {
     margin-left: calc(var(--depth, 0) * 14px);
     padding: 14px 16px;
     background: var(--bg-2);
     border-left: 3px solid var(--green);
   }
+
   .tl--top {
     background: var(--green-faint);
   }
+
   .tl--dir {
     border-left-color: var(--muted);
   }
+
   .tl h4 {
     font-size: 16px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
+
   .tl p {
     margin-top: 6px;
     font-size: 14px;
+    line-height: 1.6;
     color: var(--muted);
+  }
+
+  .tl ul {
+    margin-top: 10px;
+    padding-left: 18px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .tl li {
+    margin-top: 5px;
+  }
+}
+
+@media (max-width: 500px) {
+  .tree__roles {
+    grid-template-columns: 1fr;
   }
 }
 
