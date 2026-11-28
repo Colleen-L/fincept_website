@@ -40,7 +40,7 @@ const DO = [
   {
     glyph: 'nodes',
     title: 'Industry-Partnered Project Teams',
-    text: 'Guided by dedicated project leads, multidisciplinary temas of developers, business students, and designers collaborate with industry partners to develop real-world fintech solutions.',
+    text: 'Guided by dedicated project leads, multidisciplinary teams of developers, business students, and designers collaborate with industry partners to develop real-world fintech solutions.',
     tags: ['Real-world Projects', 'Industry Experience', 'Cross-disciplinary'],
     to: '/partners',
     cta: 'Partners',
@@ -94,18 +94,14 @@ function CtaPanel() {
     <section className="wrap section" style={{ paddingTop: 0 }}>
       <div ref={ref} className={`cta ${inView ? 'is-in' : ''}`}>
         <div className="cta__copy">
-          <p className="kicker">Get involved</p>
           <h2>Ready to rethink finance?</h2>
-          <p>Apply to join, bring us a project, or just say hello. Lorem ipsum dolor sit amet consectetur.</p>
+          <p>Apply to join, bring us a project, or reach out with any questions.</p>
           <div className="cta__btns">
             <Link to="/membership#apply" className="btn btn--dark">
-              Apply <Arrow />
+              Apply for Membership <Arrow />
             </Link>
             <Link to="/partners" className="btn btn--light">
               Partner with us <Arrow />
-            </Link>
-            <Link to="/contact" className="btn btn--line" style={{ borderColor: 'var(--ink)', color: 'var(--ink)' }}>
-              Contact <Arrow />
             </Link>
           </div>
         </div>
@@ -286,23 +282,22 @@ export default function Home() {
 
       {/* ═════ IMPACT ═════ */}
       <section className="wrap section" style={{ paddingTop: 0 }} id="impact">
-        <Reveal className="shead shead--center">
+        {/* <Reveal className="shead shead--center">
           <h2 className="title">Our impact</h2>
-          <p className="lede">Numbers are placeholders — swap in your real ones in src/pages/Home.jsx.</p>
         </Reveal>
         <div className="stats">
           {STATS.map((s, i) => (
             <Stat key={s.label} {...s} i={i} />
           ))}
-        </div>
-        <div className="highlights">
+        </div> */}
+        {/* <div className="highlights">
           {HIGHLIGHTS.map((h, i) => (
             <Reveal key={i} delay={i * 110} className="highlight">
               <h4>{h.title}</h4>
               <p>{h.text}</p>
             </Reveal>
           ))}
-        </div>
+        </div> */}
       </section>
 
       <CtaPanel />

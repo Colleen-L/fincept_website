@@ -14,6 +14,17 @@ import vpcrImg from '../assets/headshots/rishi.png';
 import vppdImg from '../assets/headshots/tats.png';
 import vpoImg from '../assets/headshots/anaiysaa.png';
 
+import adapts from '../assets/companies/adapts.jpeg';
+import axis_bank from '../assets/companies/axis_bank.png';
+import galaxy from '../assets/companies/galaxy.png';
+import jpmc from '../assets/companies/jpmc.png';
+import microsoft from '../assets/companies/microsoft.png';
+import nextech from '../assets/companies/nextech.png';
+import oracle from '../assets/companies/oracle.png';
+import psycray from '../assets/companies/psycray.png';
+import quadranttech from '../assets/companies/quadranttech.png';
+import wabtec from '../assets/companies/wabtec.png';
+
 const EXEC = 'Executive Board';
 const DIR = 'Board of Directors';
 
@@ -179,7 +190,56 @@ const DIR_PEOPLE = [
 ];
 
 const COMPANIES = [
-  'company', 'company'
+  {
+    name: 'Adapts.ai',
+    image: adapts,
+    url: 'https://www.linkedin.com/company/adaptsai/',
+  },
+  {
+    name: 'Axis Bank',
+    image: axis_bank,
+    url: 'https://www.axis.bank.in/',
+  },
+  {
+    name: 'Galaxy',
+    image: galaxy,
+    url: 'https://www.galaxy.com/',
+  },
+  {
+    name: 'JPMorgan',
+    image: jpmc,
+    url: 'https://www.jpmorganchase.com/',
+  },
+  {
+    name: 'Microsoft',
+    image: microsoft,
+    url: 'https://www.microsoft.com/en-us',
+  },
+  {
+    name: 'Nextech',
+    image: nextech,
+    url: 'https://nextech.org/',
+  },
+  {
+    name: 'Oracle',
+    image: oracle,
+    url: 'https://www.oracle.com/',
+  },
+  {
+    name: 'Psycray',
+    image: psycray,
+    url: 'https://psycray.com/',
+  },
+  {
+    name: 'Quadrant Technologies',
+    image: quadranttech,
+    url: 'https://www.quadranttechnologies.com/',
+  },
+  {
+    name: 'Wabtec Corporation',
+    image: wabtec,
+    url: 'https://www.wabteccorp.com/',
+  },
 ];
 
 export default function Team() {
@@ -225,7 +285,7 @@ export default function Team() {
           </div>
         </div>
 
-        <div className="people-group">
+        {/* <div className="people-group">
           <Reveal className="shead board-directors__head">
             <h1>BOARD OF DIRECTORS</h1>
           </Reveal>
@@ -245,7 +305,7 @@ export default function Team() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </section>
 
       {/* ───── structure ───── */}

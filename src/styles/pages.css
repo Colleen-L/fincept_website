@@ -1018,50 +1018,54 @@ h1 {
   color: var(--green);
 }
 
+
+
 .wall {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 130px));
+  justify-content: start;
+  gap: 16px;
+  margin-top: 28px;
 }
-.wall__logo {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
+
 .wall__tile {
-  position: relative;
-  display: grid;
-  place-items: center;
-  aspect-ratio: 5 / 3;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
   overflow: hidden;
-  border: 1px solid var(--line);
-  background: var(--bg-2);
-  transition: border-color 0.3s, background 0.3s;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
 .wall__tile:hover {
-  border-color: var(--green);
-  background: var(--green-faint);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
-.wall__mark {
-  position: absolute;
-  right: -6%;
-  bottom: -26%;
-  font-size: clamp(72px, 10vw, 135px);
-  font-weight: 800;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.04);
-  transition: color 0.4s;
+
+.wall__link {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
 }
-.wall__tile:hover .wall__mark {
-  color: rgba(99, 213, 124, 0.18);
+
+.wall__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
-.wall__name {
-  position: relative;
-  font-size: 14px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+
+@media (max-width: 600px) {
+  .wall {
+    grid-template-columns: repeat(3, minmax(0, 110px));
+    gap: 12px;
+  }
 }
+
 
 /* ═════════ MEMBERSHIP page ═════════ */
 .benefits {

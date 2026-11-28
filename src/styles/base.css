@@ -11,7 +11,7 @@
   --green-deep: #3da35a;
   --green-faint: rgba(99, 213, 124, 0.12);
   --text: #eef0f2;
-  --muted: #9aa1ab;
+  --muted: #a5abb3;
   --ink: #0c1a11;
   --ease: cubic-bezier(0.2, 0.75, 0.2, 1);
   --pad: clamp(20px, 5vw, 72px);

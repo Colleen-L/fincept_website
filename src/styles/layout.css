@@ -379,6 +379,8 @@
 .phero__lede {
   max-width: 50ch;
   color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.65;
 }
 .art {
   width: 100%;

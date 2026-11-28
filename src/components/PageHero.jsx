@@ -6,7 +6,7 @@ export default function PageHero({ kicker, title, lede, art = 'hex' }) {
     <header className="phero">
       <div className="wrap phero__in">
         <div className="phero__copy">
-          <p className="kicker phero__kicker">{kicker}</p>
+          {kicker && <p className="kicker phero__kicker">{kicker}</p>}
           <Reveal as="h1" variant="wipe" className="title phero__title">
             {title}
           </Reveal>

@@ -6,9 +6,14 @@ import { SITE } from '../config';
 import { useTitle } from '../hooks/useScrollProgress';
 
 const LINKS = [
-  { glyph: 'square', label: 'Email', value: SITE.email, href: `mailto:${SITE.email}` },
-  { glyph: 'hex', label: 'LinkedIn', value: SITE.linkedinHandle, href: SITE.linkedin, ext: true },
-  { glyph: 'triangle', label: 'Instagram', value: SITE.instagramHandle, href: SITE.instagram, ext: true },
+  { label: 'Email', value: SITE.email, href: `mailto:${SITE.email}` },
+  {
+    label: 'LinkedIn',
+    value: 'linkedin.com/company/fincept-p',
+    href: 'https://www.linkedin.com/company/fincept-p/',
+    ext: true,
+  },
+  { label: 'Instagram', value: SITE.instagramHandle, href: SITE.instagram, ext: true },
 ];
 
 export default function Contact() {
@@ -49,18 +54,16 @@ export default function Contact() {
   return (
     <>
       <PageHero
-        kicker="Contact"
-        title="Say hello"
+        title="Connect with us"
         art="square"
-        lede="Questions about joining, partnering, or anything else — send a message or find us online."
+        lede="Feel free to reach out with any questions about joining, partnering, or anything else. Send a message or find us online!"
       />
 
       <section className="wrap section" style={{ paddingTop: 'clamp(30px,5vw,60px)' }}>
         <div className="contact">
           <Reveal variant="left">
             <div className="shead">
-              <p className="kicker">Find us</p>
-              <h2 className="title title--md">Reach out</h2>
+              <h2 className="title title--md">Our Socials</h2>
             </div>
             <div className="clinks">
               {LINKS.map((l) => (
@@ -70,12 +73,10 @@ export default function Contact() {
                   href={l.href}
                   {...(l.ext ? { target: '_blank', rel: 'noreferrer' } : {})}
                 >
-                  <Glyph kind={l.glyph} />
                   <span>
                     <small>{l.label}</small>
                     <b>{l.value}</b>
                   </span>
-                  <Arrow />
                 </a>
               ))}
             </div>
@@ -108,7 +109,7 @@ export default function Contact() {
 
               <div className="field">
                 <label htmlFor="message">Message</label>
-                <textarea id="message" name="message" placeholder="Lorem ipsum dolor sit amet…" required />
+                <textarea id="message" name="message" placeholder="Tell us a little about what you'd like to discuss..." required />
               </div>
 
               {/* honeypot */}
